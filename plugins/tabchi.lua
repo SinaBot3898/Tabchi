@@ -275,9 +275,9 @@ end
     get_contact_list(get_contact_list_callback, {target = msg.from.id})
     return "I've sent contact list with both json and text format to your private"
    end
-  if matches[1] == "addmember" and msg.to.type == "channel" then
+  --[[if matches[1] == "addmember" and msg.to.type == "channel" then
     if not is_sudo(msg) then-- Sudo only
-      return "not sudo "
+      return
     end
     local users = redis:smembers("selfbot:users")
     get_contact_list(add_all_members, {msg = msg})
@@ -285,7 +285,7 @@ end
       channel_invite(get_receiver(msg),users[i],ok_cb,false)
     end
     return "All Contacts Invited To Group"
-  end
+  end]]
   if matches[1] == "stats" then
     if not is_sudo(msg) then-- Sudo only
       return
